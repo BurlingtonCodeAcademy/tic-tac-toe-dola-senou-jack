@@ -1,0 +1,71 @@
+/*Reset margins/padding*/
+
+
+body {
+    background-color:#3d3d3d;
+    margin: 0;
+    padding: 0;
+  
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-box {
+    border-radius: 20px;
+    background-color:#7d5fff;
+    width: 70vw;
+    
+    text-align: center;
+
+}
+
+#score {
+    display: flex;
+    justify-content: center;
+}
+
+#score h3 {
+    padding: 2rem;
+}
+
+#board {
+    background-color: #ffb8b8;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 2vh;
+
+    
+  
+}
+
+.cell {
+    background-color: #817c73;
+    justify-self: center;
+    align-self: stretch;
+    min-width: 100%;
+    min-height: 25vh;
+    
+
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+
+.status {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.status button {
+    margin: 1rem;
+}
+
+#start {}
+
