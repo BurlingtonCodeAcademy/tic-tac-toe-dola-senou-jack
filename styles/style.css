@@ -1,23 +1,31 @@
 /*Reset margins/padding*/
-
+*:focus {
+    outline: 0;
+}
 
 body {
     background-color:#3d3d3d;
     margin: 0;
     padding: 0;
-  
+    font-family: 'Josefin Sans', sans-serif;
+    
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.bold {
+    font-weight: 800;
+}
+
 #game-box {
     border-radius: 20px;
     background-color:#7d5fff;
-    width: 70vw;
-    
+    width: 60vw;
     text-align: center;
+    padding: 2rem;
+    margin: 1rem;
 
 }
 
@@ -27,7 +35,7 @@ body {
 }
 
 #score h3 {
-    padding: 2rem;
+    padding: 0 2rem 0  2rem;
 }
 
 #board {
@@ -35,7 +43,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 2vh;
+    grid-gap: .2rem;
 
     
   
@@ -46,7 +54,7 @@ body {
     justify-self: center;
     align-self: stretch;
     min-width: 100%;
-    min-height: 25vh;
+    min-height: 15vh;
     
 
 
@@ -61,11 +69,22 @@ body {
     justify-content: center;
 
 
+
 }
 
 .status button {
     margin: 1rem;
+    padding: .5rem;
+    min-width: 10rem;
+    border-radius: 20px;
+    background-color: #cd84f1;
 }
 
-#start {}
+.status button:active {
+    background-color: #c56cf0;
+}
+
+
+
+
 
