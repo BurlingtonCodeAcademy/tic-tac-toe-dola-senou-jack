@@ -10,21 +10,59 @@
 
 <body>
   <h2>Tic Tac Toe</h2>
-  <div class="board">
+  <div id="textContainer">
+    <!-- game instructions -->
+    <h3 id="describe">Game Rules: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ex?</h3>
+    <!-- score board -->
+    <div id="score">
+      <h3>Player One   <span id="playerOneScore">0</span> </h3>
+      <h3>Player Two   <span id="playerTwoScore">0</span> </h3>
+    </div>
+  </div>
+  <!-- board container -->
+  <div id="board">
+    <!-- first row -->
     <div id="row-1">
-      <div id="cell-0"></div>
-      <div id="cell-1"></div>
-      <div id="cell-2"></div>
+      
+      <div id="cell-0">
+        <figure id="test"class="gameIcon cross">click me</figure>
+      </div>
+     
+      <div id="cell-1">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
+
+      <div id="cell-2">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
     </div>
+    <!-- second row -->
     <div id="row-2">
-      <div id="cell-3"></div>
-      <div id="cell-4"></div>
-      <div id="cell-5"></div>
+      <div id="cell-3">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
+
+      <div id="cell-4">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
+
+      <div id="cell-5">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
     </div>
+<!-- Third row -->
     <div id="row-3">
-      <div id="cell-6"></div>
-      <div id="cell-7"></div>
-      <div id="cell-8"></div>
+      <div id="cell-6">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
+
+      <div id="cell-7">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
+
+      <div id="cell-8">
+        <figure class="gameIcon cross"><img href="" alt="icon"/> </figure>
+      </div>
     </div>
   </div>
 
@@ -32,6 +70,7 @@
     <button id="start" type="button">Start Game</button>
   </div>
   <script src="main.js"></script>
+<script src="/scripts/script.js"></script>
 </body>
 
 </html>
