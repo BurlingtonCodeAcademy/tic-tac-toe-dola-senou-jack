@@ -44,6 +44,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: .2rem;
+    border-radius: 5px;
 
     
   
@@ -56,11 +57,18 @@ body {
     min-width: 100%;
     min-height: 15vh;
     
+    transition: opacity .5s;
+    border-radius: 5px;
 
 
     /* display: flex;
     justify-content: center;
     align-items: center; */
+}
+
+.cell:hover {
+    opacity: .8;
+   
 }
 
 
@@ -78,11 +86,19 @@ body {
     min-width: 10rem;
     border-radius: 20px;
     background-color: #cd84f1;
+
+    transition: background-color .5s
+}
+
+.status button:hover {
+    background-color: #ffaf40;
 }
 
 .status button:active {
     background-color: #c56cf0;
 }
+
+
 
 
 

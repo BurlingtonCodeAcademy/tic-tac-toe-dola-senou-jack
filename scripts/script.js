@@ -9,5 +9,23 @@ targ = document.getElementById(targId)
 console.log(targ)
 // if statment to determine the player
 targ.innerHTML = '<img href="" alt="icon"/>'
-    
+
 })
+
+
+
+
+
+let cellLookup = {
+    "cell-1": 4,
+    "cell-2": 4,
+    "cell-1": 4,
+    "cell-1": 4,
+    "cell-1": 4,
+    "cell-1": 4,
+    "cell-1": 4,
+}
+
+let playerX = ["", "", "", ""]
+let playerO = ["",]
+ let cellValue = cellLookup[targId]
