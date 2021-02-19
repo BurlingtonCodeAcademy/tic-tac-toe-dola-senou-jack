@@ -45,6 +45,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: .2rem;
 
+
     
   
 }
@@ -85,6 +86,18 @@ body {
 }
 
 
-
-
+.Xicon{
+    background-image: url(/pictures/x.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: auto;
+}
+.Oicon{
+    background-image: url(/pictures/o.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: auto;
+}
 
