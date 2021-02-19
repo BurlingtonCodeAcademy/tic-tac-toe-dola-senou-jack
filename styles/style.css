@@ -27,6 +27,10 @@ body {
     padding: 2rem;
     margin: 1rem;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 #score {
@@ -45,26 +49,24 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: .2rem;
     border-radius: 5px;
+    width: 30vw;
+    height: 30vw;
+}
 
-
-    
-  
+#board div {
+   display: block;
 }
 
 .cell {
     background-color: #817c73;
     justify-self: center;
     align-self: stretch;
+    align-items: center;
     min-width: 100%;
     min-height: 15vh;
     
     transition: opacity .5s;
     border-radius: 5px;
-
-
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 
 .cell:hover {
@@ -104,15 +106,17 @@ body {
     background-image: url(/pictures/x.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    height: 100%;
-    width: auto;
+    background-position: center;
+    
+    
 }
 .Oicon{
     background-image: url(/pictures/o.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    height: 100%;
-    width: auto;
+    background-position: center;
+    
+    
 }
 
 
