@@ -32,11 +32,12 @@ let winS = {
 console.log(board)
 function resetGame() {
     for(let cell of cells) {
-        // cell.classList = "";
+        cell.classList = "";
+        curIcon = ""
+        // cell.class = '';
         // curIcon = ""
-        cell.className = '';
-  
     }
+    
     playerOneMoves = [];
     playerTwoMoves = [];
     currentPlayer = [];
