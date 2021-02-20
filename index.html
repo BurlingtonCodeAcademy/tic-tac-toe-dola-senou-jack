@@ -22,10 +22,12 @@
           <h3>Player One <br><span id="playerOneScore">0</span></h3>
           <h3>Player Two <br><span id="playerTwoScore">0</span></h3>
         </div>
+        <h3><span id="minutes">00</span>:<span id="seconds">00</span></h3>
       </div>
       <!-- board container -->
       
       <div id="board">
+        
         <div id="cell-0" class="cell">
           <!-- <figure class="gameIcon cross"></figure> -->
         </div>
@@ -65,8 +67,9 @@
 
       <div class="status">
         
+        <button id="reset" type="button" disabled=true>Reset Board</button>
         <button id="start" type="button"><span class="bold">Start Game</span></button>
-        <button id="reset" type="button" disabled=true>Reset Score</button>
+        <button id="restartGame" type="button">Restart Game</button>
         
       </div>
     </div>
