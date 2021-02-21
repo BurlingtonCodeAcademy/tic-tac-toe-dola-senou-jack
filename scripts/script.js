@@ -86,7 +86,7 @@ startBut.addEventListener("click", (startFunction) => {
   function gamePlay(elmt) {
     console.log(targId);
 
-    playe   rTurn();
+    playerTurn();
     //Grab parent element of clicked target
     targId = elmt.target.id;
     //Guard clause against previously plays

@@ -1,7 +1,7 @@
 let openGame = document.getElementById("open");
 let targetMode;
-let vPlayerUrl = `/pvp.html`;
-let vCompUrl = `/vComp.html`;
+let vPlayerUrl = 'pvp.html';
+let vCompUrl = `vComp.html`;
 let vPlayerBut = document.getElementById("vsPlayer");
 let vCompBut = document.getElementById("vsComp");
 let inputOne = document.getElementById("playerOneName");
