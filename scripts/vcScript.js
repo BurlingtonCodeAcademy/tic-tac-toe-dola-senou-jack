@@ -144,6 +144,7 @@ function gamePlay(elmnt) {
       compMoves.includes(cellName)
     ) {
       randNum++;
+      console.log("REF: randNUM :" , randNum)
       cellName = `cell-${randNum}`;
     }
   }
