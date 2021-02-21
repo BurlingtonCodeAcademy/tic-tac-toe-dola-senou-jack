@@ -9,6 +9,7 @@ let cells = document.getElementsByClassName("cell");
 
 let startBut = document.getElementById("start");
 let resetBut = document.getElementById("reset");
+let resetGameBut = document.getElementById("reset-Game")
 
 let currentPlayer = [];
 let playerSwitch = true;
@@ -56,6 +57,14 @@ function resetBoard() {
     resetBut.disabled = true;
 }
 
+function resetGame() {
+    resetBoard()
+    playerOneScore.textContent = "0";
+    playerOneScoreJs = 0;
+    playerTwoScore.textContent = "0";
+    playerTowScoreJs = 0;
+}
+
 //Begin Game
 startBut.addEventListener("click", (startFunction) => {
   startBut.disabled = true;
@@ -77,7 +86,7 @@ startBut.addEventListener("click", (startFunction) => {
   function gamePlay(elmt) {
     console.log(targId);
 
-    playerTurn();
+    playe   rTurn();
     //Grab parent element of clicked target
     targId = elmt.target.id;
     //Guard clause against previously plays
@@ -112,9 +121,11 @@ startBut.addEventListener("click", (startFunction) => {
           if (currentPlayer === playerOneMoves) {
             playerOneScoreJs = playerOneScoreJs + 1;
             playerOneScore.innerText = playerOneScoreJs;
+            resetBoard();
           } else if (currentPlayer === playerTwoMoves) {
             playerTwoScoreJs = playerTwoScoreJs + 1;
             playerTwoScore.innerText = playerTwoScoreJs;
+            resetBoard();
           }
 
           //Enter win state
@@ -126,4 +137,5 @@ startBut.addEventListener("click", (startFunction) => {
   board.addEventListener("click", gamePlay);
 
   resetBut.addEventListener("click", resetBoard);
+  resetGameBut.addEventListener("click", resetGame);
 });
