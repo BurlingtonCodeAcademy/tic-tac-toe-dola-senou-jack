@@ -15,6 +15,7 @@ let playerSwitch = true;
 let curIcon;
 let playerOneMoves = [];
 let playerTwoMoves = [];
+let compCell;
 
 let playerOneScore = document.getElementById("playerOneScore");
 let playerOneScoreJs = 0;
@@ -26,6 +27,18 @@ let secondsNum = 0;
 let minutes = document.getElementById("minutes");
 let minutesNum = 0;
 let timers;
+/// passing player names
+let playersName = document.location.search.slice(1)
+let playerOneName =playersName;
+let playerTwoName = `Computer`
+let p1Name = document.getElementById("p1Name")
+let p2Name = document.getElementById("p2Name")
+
+// fixing names
+playerOneName = playerOneName.slice(0,1).toLocaleUpperCase() +playerOneName.slice(1).toLowerCase()
+
+p1Name.innerText = playerOneName
+
 
 // winning conditions
 let winS = {
@@ -96,21 +109,59 @@ function resetBoard() {
 // function to change player icon
 function playerTurn(evt) {
   if (playerSwitch === true) {
-    currentPlayer = playerOneMoves;
+      p1Name.style.color =('black')
+      p2Name.style.color =('red')
+      currentPlayer = playerOneMoves;
     curIcon = Xicon;
   } else if (playerSwitch !== true) {
+    p1Name.style.color =('red')
+    p2Name.style.color =('black')
     currentPlayer = playerTwoMoves;
     curIcon = Oicon;
+
   }
 }
 
+//computer choice
+let randNum=0;
+randNum = Math.floor((Math.random() * 9)+1);
+let cellName ;
+cellName =`cell-${randNum}`
+function compHand(){
+    console.log('before while')
+    while (playerOneMoves.includes(cellName)||playerTwoMoves.includes(cellName)){
+        console.log('while')
+        randNum = Math.floor((Math.random() * 7) + 1);
+        cellName =`cell-${randNum}`
+    }
+    // console.log(`rand no  ${randNum}`)
+    // console.log(`comp ${cellName}`)
+    playerTwoMoves.push(cellName);
+    console.log(currentPlayer)
+    playerSwitch = !playerSwitch;
+    targ = document.getElementById(`${cellName}`);
+    targ.classList.add(Oicon);
+    //Switch Player
+    
+}
 // target the clicked image and getting it's Id
 function gamePlay(elmt) {
-  console.log(targId);
-
-  playerTurn();
-  //Grab parent element of clicked target
-  targId = elmt.target.id;
+    
+    
+    
+    
+    //Grab parent element of clicked target
+    targId = elmt.target.id;
+    //computer hand
+    
+    console.log(`play`)
+    //Switch Player
+    // playerTurn();
+    currentPlayer = playerOneMoves;
+    curIcon = Xicon;
+  // playerSwitch = !playerSwitch;
+  compHand()
+  //player hand
   //Guard clause against previously plays
   if (
     !playerOneMoves.includes(targId) &&
@@ -123,9 +174,6 @@ function gamePlay(elmt) {
     //Switch Player
     playerSwitch = !playerSwitch;
 
-    //   console.log(`player1 array ${playerOneMoves}`);
-    //   console.log(`player2 array ${playerTwoMoves}`);
-    //   console.log(`player array` , currentPlayer);
 
     //Inserting correct picture based off current player
     targ = document.getElementById(targId);
@@ -143,12 +191,12 @@ function gamePlay(elmt) {
         //Add to player score
         if (currentPlayer === playerOneMoves) {
           playerOneScoreJs = playerOneScoreJs + 1;
-          alert(`Player One Won!!!`);
+          alert(`${playerOneName} Won!!!`);
           resetBoard();
           playerOneScore.innerText = playerOneScoreJs;
         } else if (currentPlayer === playerTwoMoves) {
           playerTwoScoreJs = playerTwoScoreJs + 1;
-          alert(`Player Two Won!!!`);
+          alert(`${playerTwoName} Won!!!`);
           resetBoard();
           playerTwoScore.innerText = playerTwoScoreJs;
         }
@@ -182,6 +230,8 @@ function restartGame(){
 
 //Begin Game
 startBut.addEventListener("click", (startFunction) => {
+    //default player name red color
+    p1Name.style.color =('red')
   //timer resets
   secondsNum = 0;
   minutesNum = 0;
