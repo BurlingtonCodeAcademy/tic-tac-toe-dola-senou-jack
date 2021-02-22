@@ -15,7 +15,6 @@ let playerSwitch = true;
 let curIcon;
 let playerOneMoves = [];
 let playerTwoMoves = [];
-let playerHandTurn = 0;
 
 let playerOneScore = document.getElementById("playerOneScore");
 let playerOneScoreJs = 0;
@@ -81,10 +80,7 @@ function timer() {
     alert(`Game time limit\nStart a new game`);
   }
 }
-// Go home button
-goHome.addEventListener('click',(elmnt)=>{
-  window.location.assign(`http://localhost:5500/index.html`)
-})
+
 //Reset Game 
 function resetBoard() {
   clearInterval(timers);
@@ -97,12 +93,11 @@ function resetBoard() {
   Array.from(delOIcon).forEach((cell) => {
     cell.classList.remove("Oicon");
   });
-  p1Name.style.color =('red')
-  p2Name.style.color =('black')
+
   playerOneMoves = [];
   playerTwoMoves = [];
   currentPlayer = [];
-playerHandTurn =0;
+
   startBut.disabled = false;
   resetBut.disabled = true;
   board.removeEventListener("click", gamePlay);
@@ -139,7 +134,7 @@ function gamePlay(elmt) {
   ) {
     currentPlayer.push(targId);
     console.log(targId);
-    playerHandTurn++
+
     //Switch Player
     playerSwitch = !playerSwitch;
 
@@ -176,13 +171,7 @@ function gamePlay(elmt) {
         //Enter win state
         //Currentplayer score ++
       }
-     
     });
-    // draw condition
-     if (playerHandTurn==9){
-        alert(`It's a draw`);
-      resetBoard();
-      }
   }
   // blocking player from chossing an existing cell
   else if (

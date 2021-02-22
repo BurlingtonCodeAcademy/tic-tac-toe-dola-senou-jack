@@ -15,7 +15,6 @@ let compMoves =[];
 let compCell;
 let cellName;
 let randNum;
-let playerTurn = 0;
 
 let playerOneScore = document.getElementById("playerOneScore");
 let playerOneScoreJs = 0;
@@ -33,7 +32,6 @@ let playerOneName = playersName;
 let playerTwoName = `Computer`;
 let p1Name = document.getElementById("p1Name");
 let p2Name = document.getElementById("p2Name");
-let goHome =document.getElementById("goHome");
 
 // fixing names
 playerOneName =
@@ -84,10 +82,7 @@ function timer() {
     alert(`Game time limit\nStart a new game`);
   }
 }
-// Go home button
-goHome.addEventListener('click',(elmnt)=>{
-  window.location.assign(`http://localhost:5500/index.html`)
-})
+
 //Reset Game
 function resetBoard() {
   clearInterval(timers);
@@ -103,7 +98,7 @@ function resetBoard() {
 
   playerMoves = [];
   compMoves = [];
-  playerTurn =0;
+  
 
   startBut.disabled = false;
   resetBut.disabled = true;
@@ -133,23 +128,18 @@ function gamePlay(elmnt){
           console.log(playerMoves)
           targ = document.getElementById(targId);
           targ.classList.add(Xicon);
-          playerTurn ++
       }
 ///comp
 randNum = Math.floor((Math.random() * 7) + 1);
 cellName =`cell-${randNum}`
-if (playerTurn<=5){
-
-  if (playerMoves.includes(cellName) ||
-  compMoves.includes(cellName) 
-  ){
-    randNum =0;
-    while(randNum<=7&&playerMoves.includes(cellName) ||
-    compMoves.includes(cellName)){
-      randNum++
-      cellName =`cell-${randNum}`
-    }
-  }
+if (playerMoves.includes(cellName) ||
+compMoves.includes(cellName) 
+){
+  randNum =0;
+while(randNum<=7){
+  randNum++
+  cellName =`cell-${randNum}`
+}
 }
 
 
@@ -164,9 +154,9 @@ if (
   }
    // blocking player from chossing an existing cell
 else if (
-  (playerMoves.includes(targId) ||
+  playerMoves.includes(targId) ||
   compMoves.includes(targId) ||
-  targId === "board")&& playerTurn<5
+  targId === "board"
 ) {
   alert(`please choose an empty cell`);
 }
@@ -197,12 +187,7 @@ Object.keys(winS).forEach((win) => {
       resetBoard();
       playerTwoScore.innerText = playerTwoScoreJs;
     }
-    else if (playerTurn ==5 && !playerMoves.includes(winS[win][0]) &&
-    !playerMoves.includes(winS[win][1]) &&
-    !playerMoves.includes(winS[win][2])){
-      alert(`It's a draw`);
-      resetBoard();
-    }
+
     ////
     //Enter win state
     //Currentplayer score ++
