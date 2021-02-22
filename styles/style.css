@@ -40,7 +40,7 @@ body {
 }
 
 #score h3 {
-    padding: 0 1rem 0  1rem;
+    padding: 0 2rem 0  2rem;
 }
 
 #board {
@@ -64,7 +64,7 @@ body {
     align-self: stretch;
     align-items: center;
     min-width: 100%;
-    min-height: 100%;
+    min-height: 15vh;
     
     transition: opacity .5s;
     border-radius: 5px;
@@ -88,10 +88,10 @@ body {
 .status button {
     margin: 1rem;
     padding: .5rem;
-    min-width: 4vw;
+    min-width: 10rem;
     border-radius: 20px;
-    background-color: #c56cf0;
-    
+    background-color: #cd84f1;
+
     transition: background-color .5s
 }
 
@@ -100,7 +100,7 @@ body {
 }
 
 .status button:active {
-    background-color: #cd84f1;
+    background-color: #c56cf0;
 }
 
 
