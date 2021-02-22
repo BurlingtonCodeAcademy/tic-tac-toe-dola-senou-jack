@@ -105,7 +105,7 @@ function resetBoard() {
 playerHandTurn =0;
   startBut.disabled = false;
   resetBut.disabled = true;
-  board.removeEventListener("click", gamePlay);
+  board.removeEventListener("mousedown", gamePlay);
 }
 
 // function to switch turns
@@ -126,7 +126,7 @@ function playerTurn(evt) {
 
 // target the clicked image and getting it's Id
 function gamePlay(elmt) {
-  console.log(targId);
+
 
   playerTurn();
   //Grab parent element of clicked target
@@ -138,18 +138,16 @@ function gamePlay(elmt) {
     targId !== "board"
   ) {
     currentPlayer.push(targId);
-    console.log(targId);
+    // console.log(targId);
     playerHandTurn++
     //Switch Player
     playerSwitch = !playerSwitch;
 
-    //   console.log(`player1 array ${playerOneMoves}`);
-    //   console.log(`player2 array ${playerTwoMoves}`);
-    //   console.log(`player array` , currentPlayer);
+
 
     //Inserting correct picture based off current player
     targ = document.getElementById(targId);
-    targ.classList.add(curIcon); //= curIcon;
+    targ.classList.add(curIcon); 
     //Check against Win Scenarios
     Object.keys(winS).forEach((win) => {
       if (
@@ -158,7 +156,7 @@ function gamePlay(elmt) {
         currentPlayer.includes(winS[win][1]) &&
         currentPlayer.includes(winS[win][2])
       ) {
-        console.log(`you won!`);
+        
 
         //Add to player score
         if (currentPlayer === playerOneMoves) {
@@ -173,8 +171,7 @@ function gamePlay(elmt) {
           playerTwoScore.innerText = playerTwoScoreJs;
         }
 
-        //Enter win state
-        //Currentplayer score ++
+
       }
      
     });

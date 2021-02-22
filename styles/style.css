@@ -41,7 +41,7 @@ body {
 #score h3 {
     padding: 0 2rem 0  2rem;
 }
-
+/* main grid */
 #board {
     background-color: #ffb8b8;
     display: grid;

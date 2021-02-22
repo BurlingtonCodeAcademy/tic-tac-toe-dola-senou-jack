@@ -28,7 +28,7 @@ function nameTwoEnb(){
 vCompBut.addEventListener('change',nameTwoDis)
 // enables name two
 vPlayerBut.addEventListener('change',nameTwoEnb)
-
+// button to start the game
 openGame.addEventListener("click", (event) => {
   
   // check which game mode checked
@@ -43,6 +43,7 @@ openGame.addEventListener("click", (event) => {
       playerNames= inputOne.value +'-'+ inputTwo.value
       targetMode = vPlayerUrl;
     }
+    // comp game requirements 
   } else if (vCompBut.checked) {
     
       //   check if player entered his name
