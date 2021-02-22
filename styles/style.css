@@ -126,4 +126,9 @@ body {
     border-radius: 5px;
 }
 
-
+#submit input{
+    margin: 1em;
+}
+#submit label{
+    margin: 1em;
+}
