@@ -102,7 +102,7 @@ function resetBoard() {
   playerOneMoves = [];
   playerTwoMoves = [];
   currentPlayer = [];
-playerHandTurn =0;
+  playerHandTurn =0;
   startBut.disabled = false;
   resetBut.disabled = true;
   board.removeEventListener("mousedown", gamePlay);

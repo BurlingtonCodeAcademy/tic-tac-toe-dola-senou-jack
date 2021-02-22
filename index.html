@@ -19,17 +19,21 @@
                     The goal of the game of Tic Tac Toe is to get three boxes in a row.<br>
                      Face off against another player or the computer.
                 </h3>
-                <h1>
-                    Choose a game Mode
-                </h1>
+                
                 <!-- form for names and game mode -->
                 <div id="playersName">
-
+                  <h1>Choose a game Mode</h1>
                     <form action="submit">
-                        <input type="radio" id="vsPlayer" name="gameMode" value="PvP">
-                        <label for="vsPlayer">vs Player</label><br>
-                        <input type="radio" id="vsComp" value="Comp" name="gameMode">
-                        <label for="vsComp">vs Computer</label><br> 
+                      <div id="radio">
+                        <div>
+                          <input type="radio" id="vsPlayer" name="gameMode" value="PvP">
+                          <label for="vsPlayer">vs Player</label><br>
+                        </div>  
+                        <div>
+                          <input type="radio" id="vsComp" value="Comp" name="gameMode">
+                          <label for="vsComp">vs Computer</label><br> 
+                        </div>
+                      </div>
                         <input type="text" id="playerOneName" placeholder="Player One name">
                         <input type="text" id="playerTwoName" placeholder="Player two Name">
                     </form>
