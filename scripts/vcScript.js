@@ -15,6 +15,7 @@ let compMoves =[];
 let compCell;
 let cellName;
 let randNum;
+let playerTurn = 0;
 
 let playerOneScore = document.getElementById("playerOneScore");
 let playerOneScoreJs = 0;
@@ -32,6 +33,7 @@ let playerOneName = playersName;
 let playerTwoName = `Computer`;
 let p1Name = document.getElementById("p1Name");
 let p2Name = document.getElementById("p2Name");
+let goHome =document.getElementById("goHome");
 
 // fixing names
 playerOneName =
@@ -82,7 +84,10 @@ function timer() {
     alert(`Game time limit\nStart a new game`);
   }
 }
-
+// Go home button
+goHome.addEventListener('click',(elmnt)=>{
+  window.location.assign(`http://localhost:5500/index.html`)
+})
 //Reset Game
 function resetBoard() {
   clearInterval(timers);
@@ -98,7 +103,7 @@ function resetBoard() {
 
   playerMoves = [];
   compMoves = [];
-  
+  playerTurn =0;
 
   startBut.disabled = false;
   resetBut.disabled = true;
@@ -118,48 +123,74 @@ function restartGame() {
 ///game play
 function gamePlay(elmnt){
   targId = elmnt.target.id;
-  console.log(targId)
-  if (
+  console.log(`target ID ${targId}`)
+     // blocking player from chossing an existing cell
+if (
+  (playerMoves.includes(targId) ||
+  compMoves.includes(targId) ||
+  targId === "board")&& playerTurn<5
+) {
+  alert(`please choose an empty cell`);
+}
+   if (
       !playerMoves.includes(targId) &&
       !compMoves.includes(targId) &&
       targId !== "board"
       ){
           playerMoves.push(targId);
-          console.log(playerMoves)
+          
+          console.log(`Player moves ${playerMoves}`)
+          
           targ = document.getElementById(targId);
+          console.log(`trag ${targ}`)
           targ.classList.add(Xicon);
-      }
+          playerTurn ++
+          console.log(`player turn ${playerTurn}`)
+      // }
 ///comp
 randNum = Math.floor((Math.random() * 7) + 1);
-cellName =`cell-${randNum}`
-if (playerMoves.includes(cellName) ||
-compMoves.includes(cellName) 
-){
-  randNum =0;
-while(randNum<=7){
-  randNum++
-  cellName =`cell-${randNum}`
+// console.log(`randNum ${randNum}`)
+cellName =`cell-${randNum}`;
+// console.log(`cell name ${cellName}`)
+if (playerTurn<=5){
+  // console.log(`if player turn <5`)
+  if (playerMoves.includes(cellName) ||
+  compMoves.includes(cellName) 
+  ){
+    // console.log(`if comp cell name is chosen`)
+    randNum =0;
+    // console.log(`rand num =0`)
+    while(randNum<=7&& (playerMoves.includes(cellName) ||
+    compMoves.includes(cellName))){
+      // console.log(`while rand num <=7 and it's chosen `)
+      randNum++
+      // console.log(`rand num ++`)
+      cellName =`cell-${randNum}`
+      // console.log(`cell name ${cellName}`)
+    }
+  }
 }
 }
-
-
+// console.log(`comp chose something not chosen again`)
 if (
   !playerMoves.includes(cellName) &&
   !compMoves.includes(cellName) 
   ){
+    // console.log(`if cell name is not chosen`)
   compMoves.push(cellName);
+  // console.log(`comp move ${compMoves}`)
   targ = document.getElementById(`${cellName}`);
   targ.classList.add(Oicon);
 
   }
-   // blocking player from chossing an existing cell
-else if (
-  playerMoves.includes(targId) ||
-  compMoves.includes(targId) ||
-  targId === "board"
-) {
-  alert(`please choose an empty cell`);
-}
+//    // blocking player from chossing an existing cell
+// if (
+//   (playerMoves.includes(targId) ||
+//   compMoves.includes(targId) ||
+//   targId === "board")&& playerTurn<5
+// ) {
+//   alert(`please choose an empty cell`);
+// }
 
 //Check against Win Scenarios
 Object.keys(winS).forEach((win) => {
@@ -187,12 +218,21 @@ Object.keys(winS).forEach((win) => {
       resetBoard();
       playerTwoScore.innerText = playerTwoScoreJs;
     }
-
+    // else if (playerTurn ==5 && !playerMoves.includes(winS[win][0]) &&
+    // !playerMoves.includes(winS[win][1]) &&
+    // !playerMoves.includes(winS[win][2])){
+    //   alert(`It's a draw`);
+    //   resetBoard();
+    // }
     ////
     //Enter win state
     //Currentplayer score ++
   
 });
+if (playerTurn ==5){
+      alert(`It's a draw`);
+      resetBoard();
+    }
 }
 
 //Begin Game
@@ -211,7 +251,7 @@ startBut.addEventListener("click", (startFunction) => {
   resetBut.disabled = false;
 
   // allowing the cards to flip
-  board.addEventListener("click", gamePlay);
+  board.addEventListener("mousedown", gamePlay);
 });
 //reset button
 resetBut.addEventListener("click", resetBoard);
