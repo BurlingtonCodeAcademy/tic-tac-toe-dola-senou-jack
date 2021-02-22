@@ -22,7 +22,8 @@ body {
 #game-box {
     border-radius: 20px;
     background-color:#7d5fff;
-    width: 60vw;
+    width: 50vw;
+    height: fit-content;
     text-align: center;
     padding: 2rem;
     margin: 1rem;
@@ -39,7 +40,7 @@ body {
 }
 
 #score h3 {
-    padding: 0 2rem 0  2rem;
+    padding: 0 1rem 0  1rem;
 }
 
 #board {
@@ -63,7 +64,7 @@ body {
     align-self: stretch;
     align-items: center;
     min-width: 100%;
-    min-height: 15vh;
+    min-height: 100%;
     
     transition: opacity .5s;
     border-radius: 5px;
@@ -87,10 +88,10 @@ body {
 .status button {
     margin: 1rem;
     padding: .5rem;
-    min-width: 10rem;
+    min-width: 4vw;
     border-radius: 20px;
-    background-color: #cd84f1;
-
+    background-color: #c56cf0;
+    
     transition: background-color .5s
 }
 
@@ -99,7 +100,7 @@ body {
 }
 
 .status button:active {
-    background-color: #c56cf0;
+    background-color: #cd84f1;
 }
 
 

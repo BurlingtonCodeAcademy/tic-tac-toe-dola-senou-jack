@@ -10,8 +10,8 @@ let startBut = document.getElementById("start");
 let resetBut = document.getElementById("reset");
 let restartBut = document.getElementById("restartGame");
 
-let playerMoves =[];
-let compMoves =[];
+let playerMoves = [];
+let compMoves = [];
 let compCell;
 let cellName;
 let randNum;
@@ -121,9 +121,9 @@ function restartGame() {
   playerOneScore.innerText = 0;
 }
 ///game play
-function gamePlay(elmnt){
+function gamePlay(elmnt) {
   targId = elmnt.target.id;
-  console.log(targId)
+  console.log(targId);
   if (
       !playerMoves.includes(targId) &&
       !compMoves.includes(targId) &&
@@ -153,14 +153,25 @@ if (playerTurn<=5){
 }
 
 
-if (
-  !playerMoves.includes(cellName) &&
-  !compMoves.includes(cellName) 
-  ){
-  compMoves.push(cellName);
-  targ = document.getElementById(`${cellName}`);
-  targ.classList.add(Oicon);
+    console.log("REF: player moves: ", playerMoves);
+  }
 
+  ///comp
+  randNum = Math.floor(Math.random() * 7 + 1);
+  console.log("REF: randNum: ", randNum);
+  cellName = `cell-${randNum}`;
+  console.log("REF: comp cellName: ", cellName);
+  if (playerMoves.includes(cellName) || compMoves.includes(cellName)) {
+    randNum = 0;
+    while (
+      (randNum <= 7 && 
+      playerMoves.includes(cellName)) ||
+      compMoves.includes(cellName)
+    ) {
+      randNum++;
+      console.log("REF: randNUM :" , randNum)
+      cellName = `cell-${randNum}`;
+    }
   }
    // blocking player from chossing an existing cell
 else if (
@@ -171,27 +182,43 @@ else if (
   alert(`please choose an empty cell`);
 }
 
-//Check against Win Scenarios
-Object.keys(winS).forEach((win) => {
-  if (
-    //Win Conditions Check
-    (playerMoves.includes(winS[win][0]) &&
-    playerMoves.includes(winS[win][1]) &&
-    playerMoves.includes(winS[win][2]))
-    
+  if (!playerMoves.includes(cellName) && !compMoves.includes(cellName)) {
+    compMoves.push(cellName);
+    targ = document.getElementById(`${cellName}`);
+    targ.classList.add(Oicon);
+
+    console.log("REF: compMoves: ", compMoves);
+  }
+  // blocking player from chossing an existing cell
+  else if (
+    playerMoves.includes(targId) ||
+    compMoves.includes(targId) ||
+    targId === "board"
   ) {
-    console.log(`you won!`);
-    playerOneScoreJs = playerOneScoreJs + 1;
-    alert(`${playerOneName} Won!!!`);
-    resetBoard();
-    playerOneScore.innerText = playerOneScoreJs;
-  } 
-  
+    alert(`please choose an empty cell`);
+  }
+
+  //Check against Win Scenarios
+  Object.keys(winS).forEach((win) => {
+    if (
+      //Win Conditions Check
+      playerMoves.includes(winS[win][0]) &&
+      playerMoves.includes(winS[win][1]) &&
+      playerMoves.includes(winS[win][2])
+    ) {
+      console.log(`you won!`);
+      playerOneScoreJs = playerOneScoreJs + 1;
+      alert(`${playerOneName} Won!!!`);
+      resetBoard();
+      playerOneScore.innerText = playerOneScoreJs;
+    }
+
     //Add to player score
-   
-   else if (compMoves.includes(winS[win][0]) &&
-   compMoves.includes(winS[win][1]) &&
-   compMoves.includes(winS[win][2])) {
+    else if (
+      compMoves.includes(winS[win][0]) &&
+      compMoves.includes(winS[win][1]) &&
+      compMoves.includes(winS[win][2])
+    ) {
       playerTwoScoreJs = playerTwoScoreJs + 1;
       alert(`${playerTwoName} Won!!!`);
       resetBoard();
