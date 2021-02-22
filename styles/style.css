@@ -1,8 +1,12 @@
+
+
 /*Reset margins/padding*/
 *:focus {
     outline: 0;
+    font-weight: 300;
+    box-sizing: border-box;
 }
-
+/* Background Formating*/
 body {
     background-color:#3d3d3d;
     margin: 0;
@@ -14,18 +18,19 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+/* Bold Span */
 .bold {
     font-weight: 800;
 }
 
+/*Game Box*/
 #game-box {
     border-radius: 20px;
     background-color:#7d5fff;
-    width: 60vw;
+    width: 50vw;
     text-align: center;
     padding: 2rem;
-    margin: 1rem;
+    margin: .5rem;
 
     display: flex;
     flex-direction: column;
@@ -33,14 +38,16 @@ body {
 
 }
 
+/* Score Display*/
 #score {
     display: flex;
     justify-content: center;
 }
 
 #score h3 {
-    padding: 0 2rem 0  2rem;
+    padding: 0 1rem 0  1rem;
 }
+
 /* main grid */
 #board {
     background-color: #ffb8b8;
@@ -49,8 +56,8 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: .2rem;
     border-radius: 5px;
-    width: 30vw;
-    height: 30vw;
+    width: 400px;
+    height: 400px;
 }
 
 #board div {
@@ -75,12 +82,16 @@ body {
 }
 
 
+/* Button Styling */
+#game-control {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
 .status {
     display: flex;
     justify-content: center;
-
-
-
 }
 
 
@@ -102,22 +113,33 @@ body {
     background-color: #c56cf0;
 }
 
+#goHome {
+    padding: .2rem;
+}
 
+
+
+/* Form styles */
+#submit input{
+    margin: 1em;
+}
+#submit label{
+    margin: 1em;
+}
+
+/* click event player display */
 .Xicon{
     background-image: url(/pictures/x.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
-    
-    
+    background-position: center; 
 }
+
 .Oicon{
     background-image: url(/pictures/o.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
-    
-    
+    background-position: center;    
 }
 
 .winShow {
@@ -126,9 +148,28 @@ body {
     border-radius: 5px;
 }
 
-#submit input{
-    margin: 1em;
-}
-#submit label{
-    margin: 1em;
+
+/* Media Querries */
+@media screen and (max-width: 700px) {
+    #board {
+        height: 200px;
+        width: 200px;
+
+    }
+
+    .cell {
+        min-height: 5vh;
+    }
+
+
+    .status button {
+        margin: .5em;
+        padding: .2rem;
+        min-width: 5rem;
+        border-radius: 20px;
+        background-color: #cd84f1;
+    
+        transition: background-color .5s
+    }
+
 }
