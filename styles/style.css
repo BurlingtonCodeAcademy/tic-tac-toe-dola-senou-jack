@@ -23,7 +23,7 @@ body {
     border-radius: 20px;
     background-color:#7d5fff;
     width: 50vw;
-    height: fit-content;
+    /* height: fit-content; */
     text-align: center;
     padding: 2rem;
     margin: 1rem;

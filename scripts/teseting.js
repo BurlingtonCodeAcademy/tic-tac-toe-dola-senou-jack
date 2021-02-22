@@ -2,7 +2,8 @@ let targId;
 let targ;
 let Xicon = `Xicon`;
 let Oicon = `Oicon`;
-let board = document.getElementById("board");
+// let board = document.getElementById("board");
+let board= document.getElementById("board");
 let count = 0;
 let cells = document.getElementsByClassName("cell");
 
@@ -132,7 +133,7 @@ function gamePlay(elmnt) {
           playerMoves.push(targId);
           console.log(playerMoves)
           targ = document.getElementById(targId);
-          targ.classList.add(Xicon);
+          targ.classList.add(Xicon); 
           playerTurn ++
       }
 ///comp
@@ -153,26 +154,29 @@ if (playerTurn<=5){
 }
 
 
-    // console.log("REF: player moves: ", playerMoves);
+  //   console.log("REF: player moves: ", playerMoves);
   // }
 
   ///comp
-  // randNum = Math.floor(Math.random() * 7 + 1);
-  // console.log("REF: randNum: ", randNum);
-  // cellName = `cell-${randNum}`;
-  // console.log("REF: comp cellName: ", cellName);
-  // if (playerMoves.includes(cellName) || compMoves.includes(cellName)) {
-  //   randNum = 0;
-  //   while (
-  //     (randNum <= 7 && 
-  //     playerMoves.includes(cellName)) ||
-  //     compMoves.includes(cellName)
-  //   ) {
-  //     randNum++;
-  //     console.log("REF: randNUM :" , randNum)
-  //     cellName = `cell-${randNum}`;
-  //   }
-  // }
+  randNum = Math.floor(Math.random() * 7 + 1);
+  
+  cellName = `cell-${randNum}`;
+  
+  if (!playerMoves.includes(cellName) || !compMoves.includes(cellName)) {
+    console.log(compMoves)
+    console.log(targId)
+    randNum = 0;
+    while (
+      (randNum <= 7 && 
+      playerMoves.includes(cellName)) ||
+      compMoves.includes(cellName)
+    ) {
+      randNum++;
+      cellName = `cell-${randNum}`;
+    }
+    console.log(compMoves)
+    console.log(targId)
+  }
    // blocking player from chossing an existing cell
 else if (
   (playerMoves.includes(targId) ||
@@ -187,16 +191,16 @@ else if (
     targ = document.getElementById(`${cellName}`);
     targ.classList.add(Oicon);
 
-    console.log("REF: compMoves: ", compMoves);
+  
   }
-  // blocking player from chossing an existing cell
-  else if (
-    playerMoves.includes(targId) ||
-    compMoves.includes(targId) ||
-    targId === "board"
-  ) {
-    alert(`please choose an empty cell`);
-  }
+  // // blocking player from chossing an existing cell
+  // else if (
+  //   (playerMoves.includes(targId) ||
+  //   compMoves.includes(targId) ||
+  //   targId === "board")&& playerTurn<5
+  // ) {
+  //   alert(`please choose an empty cell`);
+  // }
 
   //Check against Win Scenarios
   Object.keys(winS).forEach((win) => {
