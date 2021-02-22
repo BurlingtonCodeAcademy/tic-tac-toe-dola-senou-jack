@@ -22,8 +22,7 @@ body {
 #game-box {
     border-radius: 20px;
     background-color:#7d5fff;
-    width: 50vw;
-    /* height: fit-content; */
+    width: 60vw;
     text-align: center;
     padding: 2rem;
     margin: 1rem;
