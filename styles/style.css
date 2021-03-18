@@ -197,3 +197,16 @@ div > label {
     }
 
 }
+
+.win-cell-style-one {
+    color: black;
+    background-color: mediumaquamarine;
+
+    border: 2px solid blue;
+}
+.win-cell-style-two {
+    color: black;
+    background-color: rosybrown;
+
+    border: 2px solid blue;
+}

@@ -63,6 +63,6 @@ openGame.addEventListener("click", (event) => {
   // opens the game mode only if a mode was checked
   
       if ((vPlayerBut.checked || vCompBut.checked) && goOn===true) {
-        window.location.assign(`http://localhost:5500/${targetMode}?${playerNames}`);
+        window.location.assign(`http://localhost:5502/${targetMode}?${playerNames}`);
   }
 });

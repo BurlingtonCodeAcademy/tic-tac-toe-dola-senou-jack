@@ -173,18 +173,48 @@ function gamePlay(elmnt) {
     targ.classList.add(Oicon);
   }
 
+
+  let gameIsWon = false
   //Check against Win Scenarios
   Object.keys(winS).forEach((win) => {
     if (
       //Win Conditions Check
       playerMoves.includes(winS[win][0]) &&
       playerMoves.includes(winS[win][1]) &&
-      playerMoves.includes(winS[win][2])
+      playerMoves.includes(winS[win][2]) 
     ) {
+
+      //Create for each loop to add a class to each cell
+      let winCells = [winS[win][0], winS[win][1] , winS[win][2]]
+      console.log("Win Cells: ", winCells)
+      gameIsWon = true
+
+      winCells.forEach((cell) => {
+        let singleCell = document.getElementById(cell)
+        singleCell.classList.add("win-cell-style-one")
+      })
+
+      //Reseting the board after a given timeout
+      function winReset() {
+
       playerOneScoreJs = playerOneScoreJs + 1;
       alert(`${playerOneName} Won!!!`);
       resetBoard();
-      playerOneScore.innerText = playerOneScoreJs;
+      playerOneScore.innerText = playerOneScoreJs
+
+      //Removing the win class
+      winCells.forEach((cell) => {
+        let singleCell = document.getElementById(cell)
+        singleCell.classList.remove("win-cell-style-one")
+        console.log("In the Foreach")
+        winCells=[]
+        gameIsWon = false
+      })}
+
+      // winReset()
+
+      //Call Win alert function after 500ms and reset board//
+      setTimeout(winReset, 500)
     }
 
     //Add to player score
@@ -193,17 +223,50 @@ function gamePlay(elmnt) {
       compMoves.includes(winS[win][1]) &&
       compMoves.includes(winS[win][2])
     ) {
+      
+      //Create for each loop to add a class to each cell
+      let winCells = [winS[win][0], winS[win][1] , winS[win][2]]
+      console.log("Win Cells: ", winCells)
+      gameIsWon = true
+
+      winCells.forEach((cell) => {
+        let singleCell = document.getElementById(cell)
+        singleCell.classList.add("win-cell-style-two")
+      })
+
+      
+      //Reseting the board after a given timeout
+      function winReset() {
+
       playerTwoScoreJs = playerTwoScoreJs + 1;
       alert(`${playerTwoName} Won!!!`);
       resetBoard();
       playerTwoScore.innerText = playerTwoScoreJs;
+      
+      //Removing the win class
+      winCells.forEach((cell) => {
+        let singleCell = document.getElementById(cell)
+        singleCell.classList.remove("win-cell-style-two")
+        console.log("In the Foreach")
+        winCells=[]
+        gameIsWon = false
+      })}
+
+      // winReset()
+
+      //Call Win alert function after 500ms and reset board//
+      setTimeout(winReset, 500)
     }
 
-    //draw condition
+    
   });
-  if (playerTurn == 5) {
+//draw condition
+  if (playerTurn == 5 && gameIsWon === false) {
+    function test() {
     alert(`It's a draw`);
     resetBoard();
+    }
+    setTimeout(test, 500)
   }
 }
 
