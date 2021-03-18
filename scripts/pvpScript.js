@@ -1,3 +1,4 @@
+// all variables
 let targId;
 let targ;
 let Xicon = `Xicon`;
@@ -5,23 +6,23 @@ let Oicon = `Oicon`;
 let board = document.getElementById("board");
 let count = 0;
 let cells = document.getElementsByClassName("cell");
-
+//buttons variables
 let startBut = document.getElementById("start");
 let resetBut = document.getElementById("reset");
 let restartBut = document.getElementById("restartGame");
-
+// player moves
 let currentPlayer = [];
 let playerSwitch = true;
 let curIcon;
 let playerOneMoves = [];
 let playerTwoMoves = [];
 let playerHandTurn = 0;
-
+//score variables
 let playerOneScore = document.getElementById("playerOneScore");
 let playerOneScoreJs = 0;
 let playerTwoScore = document.getElementById("playerTwoScore");
 let playerTwoScoreJs = 0;
-
+//timer variables
 let seconds = document.getElementById("seconds");
 let secondsNum = 0;
 let minutes = document.getElementById("minutes");
@@ -33,7 +34,7 @@ let playerOneName = playersName[0];
 let playerTwoName = playersName[1];
 let p1Name = document.getElementById("p1Name");
 let p2Name = document.getElementById("p2Name");
-// fixing names
+// getting names from url and sanitizing them
 playerOneName =
   playerOneName.slice(0, 1).toLocaleUpperCase() +
   playerOneName.slice(1).toLowerCase();
@@ -59,19 +60,24 @@ let winS = {
 
 // timming interval
 function timer() {
+  //single digit seconds
   if (minutesNum <= 60) {
     if (secondsNum < 9) {
       secondsNum++;
       seconds.innerText = `0${secondsNum}`;
+      //double digit seconds
     } else if (secondsNum < 60) {
       secondsNum++;
       seconds.innerText = secondsNum;
+      //minutes interval
     } else if ((secondsNum = 60)) {
+      //single digit minutes
       if (minutesNum < 9) {
         minutesNum++;
         secondsNum = `00`;
         seconds.innerText = secondsNum;
         minutes.innerText = `0${minutesNum}`;
+        //double  digit minutes
       } else {
         minutesNum++;
         secondsNum = 00;
@@ -79,7 +85,7 @@ function timer() {
         minutes.innerText = minutesNum;
       }
     }
-    // if the game was left more than 60 hours it will reset and throw an alert
+    // if the game was left more than 1 hour it will reset and throw an alert
   } else if (minutesNum > 60) {
     resetBoard;
     alert(`Game time limit\nStart a new game`);
@@ -87,20 +93,24 @@ function timer() {
 }
 // Go home button
 goHome.addEventListener("click", (elmnt) => {
-  window.location.assign(`http://localhost:5500/index.html`);
+  window.location.assign(
+    `/index.html`
+  );
 });
 //Reset Game
 function resetBoard() {
   clearInterval(timers);
   let delXIcon = document.querySelectorAll(".Xicon");
   let delOIcon = document.querySelectorAll(".Oicon");
-
+  //remove X icon picture
   Array.from(delXIcon).forEach((cell) => {
     cell.classList.remove("Xicon");
   });
+  //remove O icon picture
   Array.from(delOIcon).forEach((cell) => {
     cell.classList.remove("Oicon");
   });
+  //reset all variables
   p1Name.style.color = "red";
   p2Name.style.color = "black";
   playerOneMoves = [];
@@ -113,16 +123,22 @@ function resetBoard() {
 }
 
 // function to switch turns
-// function to change player icon
 function playerTurn(evt) {
+  //makes current player PLAYER 1
   if (playerSwitch === true) {
     currentPlayer = playerOneMoves;
+    // change current icon to X
     curIcon = Xicon;
+    //switch name color
     p1Name.style.color = "black";
     p2Name.style.color = "red";
+
+    //makes current player PLAYER 2
   } else if (playerSwitch !== true) {
     currentPlayer = playerTwoMoves;
+    // change current icon to O
     curIcon = Oicon;
+    //switch name color
     p1Name.style.color = "red";
     p2Name.style.color = "black";
   }
@@ -196,7 +212,7 @@ function gamePlay(elmt) {
           console.log("Win Cells: ", winCells);
           gameIsWon = true;
 
-          //Iterate over winning cells and add class
+          //Iterate over winning cells and add highlight class
           winCells.forEach((cell) => {
             let singleCell = document.getElementById(cell);
             singleCell.classList.add("win-cell-style-two");

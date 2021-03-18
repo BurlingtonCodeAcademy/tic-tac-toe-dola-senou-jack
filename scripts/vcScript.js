@@ -1,3 +1,4 @@
+// all variables
 let targId;
 let targ;
 let Xicon = `Xicon`;
@@ -5,23 +6,23 @@ let Oicon = `Oicon`;
 let board = document.getElementById("board");
 let count = 0;
 let cells = document.getElementsByClassName("cell");
-
+//buttons variables
 let startBut = document.getElementById("start");
 let resetBut = document.getElementById("reset");
 let restartBut = document.getElementById("restartGame");
-
+// player moves
 let playerMoves = [];
 let compMoves = [];
 let compCell;
 let cellName;
 let randNum;
 let playerTurn = 0;
-
+//score variables
 let playerOneScore = document.getElementById("playerOneScore");
 let playerOneScoreJs = 0;
 let playerTwoScore = document.getElementById("playerTwoScore");
 let playerTwoScoreJs = 0;
-
+//timer variables
 let seconds = document.getElementById("seconds");
 let secondsNum = 0;
 let minutes = document.getElementById("minutes");
@@ -35,11 +36,10 @@ let p1Name = document.getElementById("p1Name");
 let p2Name = document.getElementById("p2Name");
 let goHome = document.getElementById("goHome");
 
-// fixing names
+// getting names from url and sanitizing them
 playerOneName =
   playerOneName.slice(0, 1).toLocaleUpperCase() +
   playerOneName.slice(1).toLowerCase();
-
 p1Name.innerText = playerOneName;
 
 // winning conditions
@@ -58,19 +58,24 @@ let winS = {
 
 // timming interval
 function timer() {
+  //single digit seconds
   if (minutesNum <= 60) {
     if (secondsNum < 9) {
       secondsNum++;
       seconds.innerText = `0${secondsNum}`;
+      //double digit seconds
     } else if (secondsNum < 60) {
       secondsNum++;
       seconds.innerText = secondsNum;
+      //minutes interval
     } else if ((secondsNum = 60)) {
+      //single digit minutes
       if (minutesNum < 9) {
         minutesNum++;
         secondsNum = `00`;
         seconds.innerText = secondsNum;
         minutes.innerText = `0${minutesNum}`;
+        //double  digit minutes
       } else {
         minutesNum++;
         secondsNum = 00;
@@ -93,18 +98,18 @@ function resetBoard() {
   clearInterval(timers);
   let delXIcon = document.querySelectorAll(".Xicon");
   let delOIcon = document.querySelectorAll(".Oicon");
-
+  //remove X icon picture
   Array.from(delXIcon).forEach((cell) => {
     cell.classList.remove("Xicon");
   });
+  //remove O icon picture
   Array.from(delOIcon).forEach((cell) => {
     cell.classList.remove("Oicon");
   });
-
+  //reset all variables
   playerMoves = [];
   compMoves = [];
   playerTurn = 0;
-
   startBut.disabled = false;
   resetBut.disabled = true;
   board.removeEventListener("mousedown", gamePlay);
@@ -133,6 +138,7 @@ function gamePlay(elmnt) {
   ) {
     alert(`please choose an empty cell`);
   }
+  // if the cell is not chosen player makes his move
   if (
     !playerMoves.includes(targId) &&
     !compMoves.includes(targId) &&
@@ -173,46 +179,44 @@ function gamePlay(elmnt) {
     targ.classList.add(Oicon);
   }
 
-
-  let gameIsWon = false
+  let gameIsWon = false;
   //Check against Win Scenarios
   Object.keys(winS).forEach((win) => {
     if (
       //Win Conditions Check
       playerMoves.includes(winS[win][0]) &&
       playerMoves.includes(winS[win][1]) &&
-      playerMoves.includes(winS[win][2]) 
+      playerMoves.includes(winS[win][2])
     ) {
-
       //Create for each loop to add a class to each cell
-      let winCells = [winS[win][0], winS[win][1] , winS[win][2]]
-      console.log("Win Cells: ", winCells)
-      gameIsWon = true
-      //Iterate over winning cells and add class 
+      let winCells = [winS[win][0], winS[win][1], winS[win][2]];
+      console.log("Win Cells: ", winCells);
+      gameIsWon = true;
+      //Iterate over winning cells and add class
       winCells.forEach((cell) => {
-        let singleCell = document.getElementById(cell)
-        singleCell.classList.add("win-cell-style-one")
-      })
+        let singleCell = document.getElementById(cell);
+        singleCell.classList.add("win-cell-style-one");
+      });
 
       //Reseting the board after a given timeout
       function winReset() {
+        playerOneScoreJs = playerOneScoreJs + 1;
+        alert(`${playerOneName} Won!!!`);
+        resetBoard();
+        playerOneScore.innerText = playerOneScoreJs;
 
-      playerOneScoreJs = playerOneScoreJs + 1;
-      alert(`${playerOneName} Won!!!`);
-      resetBoard();
-      playerOneScore.innerText = playerOneScoreJs
-
-      //Removing the win class
-      winCells.forEach((cell) => {
-        let singleCell = document.getElementById(cell)
-        singleCell.classList.remove("win-cell-style-one")
-        console.log("In the Foreach")
-        winCells=[]
-        gameIsWon = false
-      })}
+        //Removing the win class
+        winCells.forEach((cell) => {
+          let singleCell = document.getElementById(cell);
+          singleCell.classList.remove("win-cell-style-one");
+          console.log("In the Foreach");
+          winCells = [];
+          gameIsWon = false;
+        });
+      }
 
       //Call Win alert function after 500ms and reset board//
-      setTimeout(winReset, 500)
+      setTimeout(winReset, 500);
     }
 
     //Add to player score
@@ -221,48 +225,44 @@ function gamePlay(elmnt) {
       compMoves.includes(winS[win][1]) &&
       compMoves.includes(winS[win][2])
     ) {
-      
       //Create for each loop to add a class to each cell
-      let winCells = [winS[win][0], winS[win][1] , winS[win][2]]
-      console.log("Win Cells: ", winCells)
-      gameIsWon = true
-
+      let winCells = [winS[win][0], winS[win][1], winS[win][2]];
+      console.log("Win Cells: ", winCells);
+      gameIsWon = true;
+      //Iterate over winning cells and add highlight class
       winCells.forEach((cell) => {
-        let singleCell = document.getElementById(cell)
-        singleCell.classList.add("win-cell-style-two")
-      })
+        let singleCell = document.getElementById(cell);
+        singleCell.classList.add("win-cell-style-two");
+      });
 
-      
       //Reseting the board after a given timeout
       function winReset() {
+        playerTwoScoreJs = playerTwoScoreJs + 1;
+        alert(`${playerTwoName} Won!!!`);
+        resetBoard();
+        playerTwoScore.innerText = playerTwoScoreJs;
 
-      playerTwoScoreJs = playerTwoScoreJs + 1;
-      alert(`${playerTwoName} Won!!!`);
-      resetBoard();
-      playerTwoScore.innerText = playerTwoScoreJs;
-      
-      //Removing the win class
-      winCells.forEach((cell) => {
-        let singleCell = document.getElementById(cell)
-        singleCell.classList.remove("win-cell-style-two")
-        console.log("In the Foreach")
-        winCells=[]
-        gameIsWon = false
-      })}
+        //Removing the win class
+        winCells.forEach((cell) => {
+          let singleCell = document.getElementById(cell);
+          singleCell.classList.remove("win-cell-style-two");
+          console.log("In the Foreach");
+          winCells = [];
+          gameIsWon = false;
+        });
+      }
 
       //Call Win alert function after 500ms and reset board//
-      setTimeout(winReset, 500)
+      setTimeout(winReset, 500);
     }
-
-    
   });
-//draw condition
+  //draw condition
   if (playerTurn == 5 && gameIsWon === false) {
     function test() {
-    alert(`It's a draw`);
-    resetBoard();
+      alert(`It's a draw`);
+      resetBoard();
     }
-    setTimeout(test, 500)
+    setTimeout(test, 500);
   }
 }
 
