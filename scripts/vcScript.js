@@ -188,7 +188,7 @@ function gamePlay(elmnt) {
       let winCells = [winS[win][0], winS[win][1] , winS[win][2]]
       console.log("Win Cells: ", winCells)
       gameIsWon = true
-
+      //Iterate over winning cells and add class 
       winCells.forEach((cell) => {
         let singleCell = document.getElementById(cell)
         singleCell.classList.add("win-cell-style-one")
@@ -210,8 +210,6 @@ function gamePlay(elmnt) {
         winCells=[]
         gameIsWon = false
       })}
-
-      // winReset()
 
       //Call Win alert function after 500ms and reset board//
       setTimeout(winReset, 500)
@@ -251,8 +249,6 @@ function gamePlay(elmnt) {
         winCells=[]
         gameIsWon = false
       })}
-
-      // winReset()
 
       //Call Win alert function after 500ms and reset board//
       setTimeout(winReset, 500)
