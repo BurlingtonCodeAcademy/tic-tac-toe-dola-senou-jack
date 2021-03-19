@@ -1,0 +1,212 @@
+
+
+/*Reset margins/padding*/
+*:focus {
+    outline: 0;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+/* Background Formating*/
+body {
+    background-color:#3d3d3d;
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Bold Span */
+.bold {
+    font-weight: 800;
+}
+
+/*Game Box*/
+#game-box {
+    border-radius: 20px;
+    background-color:#7d5fff;
+    width: 50vw;
+    text-align: center;
+    padding: 2rem;
+    margin: .5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* Score Display*/
+#score {
+    display: flex;
+    justify-content: center;
+}
+
+#score h3 {
+    padding: 0 1rem 0  1rem;
+    margin: 0;
+}
+
+/* main grid */
+#board {
+    background-color: #ffb8b8;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: .2rem;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+}
+
+#board div {
+   display: block;
+}
+
+.cell {
+    background-color: #817c73;
+    justify-self: center;
+    align-self: stretch;
+    align-items: center;
+    min-width: 100%;
+    min-height: 15vh;
+    
+    transition: opacity .5s;
+    border-radius: 5px;
+}
+
+.cell:hover {
+    opacity: .8;
+   
+}
+
+
+/* Button Styling */
+#game-control {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+.status {
+    display: flex;
+    justify-content: center;
+}
+
+
+.status button {
+    margin: 1rem;
+    padding: .5rem;
+    min-width: 10rem;
+    border-radius: 20px;
+    background-color: #cd84f1;
+
+    transition: background-color .5s
+}
+
+.status button:hover {
+    background-color: #ffaf40;
+}
+
+.status button:active {
+    background-color: #c56cf0;
+}
+
+#open {
+    padding: .2rem;
+    min-width: 5rem;
+}
+
+#goHome {
+    padding: .2rem;
+}
+
+
+
+/* Form styles */
+form > input {
+    padding: .5rem;
+    border-radius: 10px;
+}
+
+form > input:focus {
+    background-color: #ffaf40;
+}
+#radio {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+div > label {
+    font-size: 1.5rem;
+}
+
+#submit input{
+    margin: 1em;
+}
+#submit label{
+    margin: 1em;
+}
+
+/* click event player display */
+.Xicon{
+    background-image: url(/pictures/x.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; 
+}
+
+.Oicon{
+    background-image: url(/pictures/o.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;    
+}
+
+.winShow {
+    border: 3px solid #ffaf40;
+    box-shadow:0px 0px #ffb8b8;
+    border-radius: 5px;
+}
+
+
+/* Media Querries */
+@media screen and (max-width: 700px) {
+    #board {
+        height: 200px;
+        width: 200px;
+
+    }
+
+    .cell {
+        min-height: 5vh;
+    }
+
+
+    .status button {
+        margin: .5em;
+        padding: .2rem;
+        min-width: 5rem;
+        border-radius: 20px;
+        background-color: #cd84f1;
+    
+        transition: background-color .5s
+    }
+
+}
+
+.win-cell-style-one {
+    color: black;
+    background-color: mediumaquamarine;
+
+    border: 2px solid blue;
+}
+.win-cell-style-two {
+    color: black;
+    background-color: rosybrown;
+
+    border: 2px solid blue;
+}

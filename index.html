@@ -4,34 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tic Tac Toe</title>
+  <title>Game Mode</title>
+  <link rel="stylesheet" href="/styles/style.css">
 </head>
 
 <body>
-  <h2>Tic Tac Toe</h2>
-  <div class="board">
-    <div id="row-1">
-      <div id="cell-0"></div>
-      <div id="cell-1"></div>
-      <div id="cell-2"></div>
-    </div>
-    <div id="row-2">
-      <div id="cell-3"></div>
-      <div id="cell-4"></div>
-      <div id="cell-5"></div>
-    </div>
-    <div id="row-3">
-      <div id="cell-6"></div>
-      <div id="cell-7"></div>
-      <div id="cell-8"></div>
-    </div>
-  </div>
 
-  <div class="status">
-    <button id="start" type="button">Start Game</button>
-  </div>
-  <script src="main.js"></script>
-</body>
+  <body>
+    <!-- main container -->
+    <div id="game-box">
+      <!-- title -->
+      <h2>Tic <span class="bold">Tac</span> Toe</h2>
+      <div id="textContainer">
+        <!-- game instructions -->
+        <h3 id="describe">
+          The goal of the game of Tic Tac Toe is to get three boxes in a row.<br>
+          Face off against another player or the computer.
+        </h3>
+
+        <!-- form for names and game mode -->
+        <div id="playersName">
+          <!-- game mode options -->
+          <h1>Choose a game Mode</h1>
+          <form action="submit">
+            <div id="radio">
+              <!-- PvP button -->
+              <div>
+                <input type="radio" id="vsPlayer" name="gameMode" value="PvP">
+                <label for="vsPlayer">vs Player</label><br>
+              </div>
+              <!--PvC button  -->
+              <div>
+                <input type="radio" id="vsComp" value="Comp" name="gameMode">
+                <label for="vsComp">vs Computer</label><br>
+              </div>
+            </div>
+            <!-- players name input -->
+            <input type="text" id="playerOneName" placeholder="Player One name">
+            <input type="text" id="playerTwoName" placeholder="Player two Name">
+          </form>
+        </div>
+
+        <!-- start game button -->
+        <div class="status">
+          <button id="open" type="button"> Start</button>
+        </div>
+      </div>
+      <script src="/scripts/gameMode.js"></script>
+  </body>
 
 </html>

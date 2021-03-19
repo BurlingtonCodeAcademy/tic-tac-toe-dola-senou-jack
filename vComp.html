@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/style.css" />
+  <title>Tic Tac Toe PvP</title>
+</head>
+
+<body>
+  <!-- main container -->
+  <div id="game-box">
+    <!-- title -->
+    <h2>Tic <span class="bold">Tac</span> Toe</h2>
+    <div id="textContainer">
+      <!-- game instructions -->
+      <h3 id="describe">
+        The goal of the game of Tic Tac Toe is to get three boxes in a row.<br />
+        You and a Computer will alternate turns.
+      </h3>
+      <!-- score board -->
+      <div id="score">
+        <h3>
+          <!-- player name and score -->
+          <span id="p1Name">Player One</span><br /><span id="playerOneScore">0</span>
+        </h3>
+        <!-- computer score -->
+        <h3>
+          <span id="p2Name">Computer</span><br /><span id="playerTwoScore">0</span>
+        </h3>
+      </div>
+      <!-- timer -->
+      <h3><span id="minutes">00</span>:<span id="seconds">00</span></h3>
+      <!-- go home button -->
+    </div>
+    <!-- board container -->
+    <div id="board">
+      <div id="cell-0" class="cell"></div>
+
+      <div id="cell-1" class="cell"></div>
+
+      <div id="cell-2" class="cell"></div>
+
+      <div id="cell-3" class="cell"></div>
+
+      <div id="cell-4" class="cell"></div>
+
+      <div id="cell-5" class="cell"></div>
+
+      <div id="cell-6" class="cell"></div>
+
+      <div id="cell-7" class="cell"></div>
+
+      <div id="cell-8" class="cell"></div>
+    </div>
+    <!-- game controls -->
+    <div id="game-control" class="status">
+      <div>
+        <!-- board reset remove the moves -->
+        <button id="reset" type="button" disabled="true">Reset Board</button>
+        <!-- start the game and timer  -->
+        <button id="start" type="button">
+          <span class="bold">Start Game</span>
+        </button>
+        <!-- resets the board and score and timer -->
+        <button id="restartGame" type="button">Restart Game</button>
+      </div>
+      <!-- redirects back to home page -->
+      <div class="status">
+        <button id="goHome">Home</button>
+      </div>
+    </div>
+  </div>
+  <script src="/scripts/vcScript.js"></script>
+</body>
+
+</html>
